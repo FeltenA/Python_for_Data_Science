@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 
 def ft_load(path: str) -> np.ndarray:
@@ -14,11 +14,14 @@ def ft_load(path: str) -> np.ndarray:
             raise AssertionError("File does not exist")
         elif not path.lower().endswith((".jpg", ".jpeg")):
             raise AssertionError("File does not have the right file extension")
+        img = Image.open(path)
     except AssertionError as error:
         print("AssertionError:", error)
         return []
+    except UnidentifiedImageError as error:
+        print("UnidentifiedImageError:", error)
+        return []
 
-    img = Image.open(path)
     data = np.asarray(img)
     print(f"The shape of image is: {data.shape}")
     return data

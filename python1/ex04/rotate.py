@@ -10,7 +10,7 @@ def transpose_array(arr: np.ndarray) -> np.ndarray:
     new_arr = np.zeros((w, h), int)
     for i in range(w):
         for j in range(h):
-            new_arr[i][j] = arr[j][i]
+            new_arr[i, j] = arr[j, i, 0]
     return new_arr
 
 
