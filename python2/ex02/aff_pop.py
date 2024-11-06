@@ -42,9 +42,9 @@ def main():
         print("AssertionError: CSV file not valid")
         exit(0)
     plot_data.drop(plot_data.loc[:, "2051":].columns, axis=1, inplace=True)
-    plot_data.transpose().plot(color=['b', 'g'])
+    plot_data.transpose().plot(color=['g', 'b'])
     plt.title("Population Projections")
-    plt.legend(["Belgium", "France"], loc=4)
+    plt.legend(["France", "Belgium"], loc=4, reverse=True)
     plt.xlabel("Years")
     years = [x for x in plot_data.columns.to_list()[::40]]
     plt.xticks([int(x) - 1800 for x in years], years)
